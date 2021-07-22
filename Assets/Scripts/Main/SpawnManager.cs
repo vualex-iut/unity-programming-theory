@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnEnemy", 1, 2);
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy() // ABSTRACTION
     {
         Vector3 spawnPosition = new Vector3(
             Random.Range(-maxXSpawnRange, maxXSpawnRange),
@@ -37,14 +37,14 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(Vector3 position, GameObject prefab, string name)
+    private void SpawnEnemy(Vector3 position, GameObject prefab, string name) // ABSTRACTION
     {
         GameObject enemy = Instantiate(prefab, position, prefab.transform.rotation);
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         enemyScript.Name = name;
     }
 
-    private static string GetRandomBossName()
+    private static string GetRandomBossName() // ABSTRACTION
     {
         int bossNameIndex = Random.Range(0, possibleBossNames.Length);
         return possibleBossNames[bossNameIndex];

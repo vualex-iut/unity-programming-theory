@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; } // ENCAPSULATION
     [SerializeField] Text coinCountText;
     private int coinCount;
 
@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void IncrementCoinCount(int increment)
+    public void IncrementCoinCount(int increment) // ABSTRACTION
     {
         coinCount += increment;
         UpdateCoinCountText();
     }
 
-    private void UpdateCoinCountText()
+    private void UpdateCoinCountText() // ABSTRACTION
     {
         coinCountText.text = "Coins : " + coinCount;
     }

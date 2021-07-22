@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
                 Debug.LogError("Invalid name given to Enemy");
             }
         }
-    }
+    } // ENCAPSULATION
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         DestroyIfOutOfBounds();
     }
 
-    private void Move()
+    private void Move() // ABSTRACTION
     {
         rb.AddForce(
             Random.Range(-1f, 1f) * speed,
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
         );
     }
 
-    private void DestroyIfOutOfBounds()
+    private void DestroyIfOutOfBounds() // ABSTRACTION
     {
         if (transform.position.y < -10)
         {
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void DisplayDeathMessage()
+    public virtual void DisplayDeathMessage() // ABSTRACTION
     {
         Debug.Log($"Enemy '{_name}' died.");
     }

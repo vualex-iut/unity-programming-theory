@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : Enemy
+public class BasicEnemy : Enemy // INHERITANCE
 {
     [SerializeField] private GameObject coinPrefab;
     private float droppedCoinMaxRange = 2;
 
-    public override void Die()
+    public override void Die() // POLYMORPHISM
     {
         DropCoins();
         base.Die();
     }
 
-    private void DropCoins()
+    private void DropCoins() // ABSTRACTION
     {
         for (int i = 0; i < Random.Range(1, 6); i++)
         {
@@ -26,7 +26,7 @@ public class BasicEnemy : Enemy
         }
     }
 
-    private void CreateCoin(Vector3 position)
+    private void CreateCoin(Vector3 position) // ABSTRACTION
     {
         Instantiate(
             coinPrefab,

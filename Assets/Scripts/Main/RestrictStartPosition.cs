@@ -13,7 +13,7 @@ public class RestrictStartPosition : MonoBehaviour
         RestrictPosition();
     }
 
-    private void RestrictPosition()
+    private void RestrictPosition() // ABSTRACTION
     {
         if (transform.position.x > maxXStartRange)
         {

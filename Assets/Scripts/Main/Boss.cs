@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Enemy
+public class Boss : Enemy // INHERITANCE
 {
     [SerializeField] private GameObject[] enemiesToSummonPrefabs;
     private float summonMaxRange = 3;
 
-    public override void Die()
+    public override void Die() // POLYMORPHISM
     {
         SummonEnemies();
         base.Die();
     }
 
-    public override void DisplayDeathMessage()
+    public override void DisplayDeathMessage() // POLYMORPHISM
     {
         Debug.Log($"Boss '{_name}' died.");
     }
 
-    private void SummonEnemies()
+    private void SummonEnemies() // ABSTRACTION
     {
         for (int i = 0; i < enemiesToSummonPrefabs.Length; i++)
         {
@@ -31,7 +31,7 @@ public class Boss : Enemy
         }
     }
 
-    private void SummonEnemy(GameObject enemyPrefab, Vector3 position, int enemyNumber)
+    private void SummonEnemy(GameObject enemyPrefab, Vector3 position, int enemyNumber) // ABSTRACTION
     {
         GameObject enemy = Instantiate(
             enemyPrefab,
