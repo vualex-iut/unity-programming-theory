@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
         get { return _name; }
         set
         {
-            if (!string.IsNullOrEmpty(_name))
+            if (!string.IsNullOrEmpty(value))
             {
                 _name = value;
             }
@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Move();
+        DestroyIfOutOfBounds();
     }
 
     private void Move()
@@ -42,9 +43,17 @@ public class Enemy : MonoBehaviour
         );
     }
 
-    private void OnMouseDown()
+    private void DestroyIfOutOfBounds()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButton(0))
         {
             Die();
         }
@@ -58,6 +67,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void DisplayDeathMessage()
     {
-        Debug.Log($"Enemy {_name} died.");
+        Debug.Log($"Enemy '{_name}' died.");
     }
 }

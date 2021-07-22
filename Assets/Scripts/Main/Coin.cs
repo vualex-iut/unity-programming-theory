@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Coin : MonoBehaviour
 {
@@ -22,11 +23,9 @@ public class Coin : MonoBehaviour
         transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Destroy(gameObject);
-        }
+        GameManager.Instance.IncrementCoinCount(1);
+        Destroy(gameObject);
     }
 }

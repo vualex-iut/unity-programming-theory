@@ -15,7 +15,7 @@ public class Boss : Enemy
 
     public override void DisplayDeathMessage()
     {
-        Debug.Log($"Boss {_name} died.");
+        Debug.Log($"Boss '{_name}' died.");
     }
 
     private void SummonEnemies()
@@ -27,16 +27,18 @@ public class Boss : Enemy
                 0,
                 Random.Range(-summonMaxRange, summonMaxRange)
             );
-            SummonEnemy(enemiesToSummonPrefabs[i], summonPosition);
+            SummonEnemy(enemiesToSummonPrefabs[i], summonPosition, i + 1);
         }
     }
 
-    private void SummonEnemy(GameObject enemyPrefab, Vector3 position)
+    private void SummonEnemy(GameObject enemyPrefab, Vector3 position, int enemyNumber)
     {
-        Instantiate(
+        GameObject enemy = Instantiate(
             enemyPrefab,
             position,
             enemyPrefab.transform.rotation
         );
+        Enemy enemyScript = enemy.GetComponent<Enemy>();
+        enemyScript.Name = _name + "'s Minion " + enemyNumber;
     }
 }
